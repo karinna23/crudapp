@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Faculty List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/styles.css' %}">
+</head>
+<body>
+    <h1>Faculty List</h1>
+    <div class="center-table">
+        <table class="faculty-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Academic Rank</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for faculty in faculties %}
+                    <tr>
+                        <td>{{ faculty.faculty_number }}</td>
+                        <td>{{ faculty.first_name }} {{ faculty.last_name }}</td>
+                        <td>{{ faculty.academic_rank }}</td>
+                        <td>{{ faculty.email }}</td>
+                        <td>
+                            <a href="{% url 'myapp:edit' faculty.pk %}" class="edit-button">Edit</a>
+                            <a href="{% url 'myapp:delete' faculty.pk %}" class="delete-button">Delete</a>
+                        </td>
+                    </tr>       
+                {% endfor %}  
+            </tbody>
+        </table>
+    </div> 
+    <a href="{% url 'myapp:add' %}" class="add-button">Add New Faculty</a>
+</body>
+</html>
+

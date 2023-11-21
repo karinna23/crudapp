@@ -1,0 +1,35 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Faculty</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp\css\styles.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Edit Faculty</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.first_name.id_for_label }}" class="form-label">First Name:</label>
+                {{ form.first_name }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.last_name.id_for_label }}" class="form-label">Last Name:</label>
+                {{ form.last_name }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}" class="form-label">Email:</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.academic_rank.id_for_label }}" class="form-label">Academic Rank:</label>
+                {{ form.academic_rank }}
+            </div>
+            <button type="submit" class="form-button">Save</button>
+            <a href="{% url 'myapp:list' %}" class="form-cancel-link">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
+
